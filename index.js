@@ -9,10 +9,10 @@ const fs = require("fs");
  ** AUTHENTICATION
  */
 const clientnew = new TwitterApi({
-  appKey: "RYwuKure5YNWdv3JbMKp4GeT7",
-  appSecret: "TCCTl1UKHywLa3AvQrx08vkRtNIbi2DMbyiUDnv7Xe3R25hWTx",
-  accessToken: "1651581240120602624-PtOlHkLzj8b8e2IEyMH7mitUcSgmDQ",
-  accessSecret: "1dKK49Sc6sAau7NQSLSBrBOr91QiNRZBm2e6QQdnmbW7A",
+  appKey: "appKey",
+  appSecret: "appSecret",
+  accessToken: "accessToken",
+  accessSecret: "accessSecret",
 });
 
 const rwClient = clientnew.readWrite;
@@ -20,7 +20,7 @@ const rwClient = clientnew.readWrite;
 /*
  ** GET TWEETS FROM FILE
  */
-var filepath = "/Users/diogduarte/Desktop/Bots/twitterBot-updated/tweets.txt";
+var filepath = "filepath";
 function getTweets() {
   const tweets = fs.readFileSync(filepath, "utf8").split("\n");
   var tweetstrimmed = tweets.filter((tweet) => tweet.trim() !== "");
@@ -47,16 +47,16 @@ async function SendTweet() {
 
 async function SendTweetImage() {
   const mediaId = await clientnew.v1.uploadMedia(
-    "/Users/diogduarte/Desktop/Bots/twitterBot-updated/images/susdog.png"
+    "filepath"
   );
 
   const { data: createdTweet } = await rwClient.v2.tweetThread([
     {
-      text: "Quando ela diz que é só um amigo hahahahahahaha sou muito louco mano",
+      text: "text",
       media: { media_ids: [mediaId] },
     },
   ]);
-  console.log("Tweet image enviado");
+  console.log("Tweet image");
 }
 
 SendTweetImage();
